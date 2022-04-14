@@ -41,6 +41,15 @@ const resolvers = {
 
       return { token, user };
     },
+    addPlayer:async(parent,args,context) =>{
+      // TODO: $push the player ID in the user playerIds user model
+    
+    },
+    deletePlayer:async(parent,args,context) =>{
+      // TODO: $pull the player ID in the user playerIds user model
+    
+    }
+
   },
 };
 
