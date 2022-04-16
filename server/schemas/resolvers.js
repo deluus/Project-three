@@ -48,7 +48,7 @@ const resolvers = {
           { _id: context.user._id },
           {  
             $addToSet: {
-             playerIds: playerId ,
+             playerIds: playerId 
             }, 
           }
         );
@@ -58,15 +58,13 @@ const resolvers = {
     deletePlayer: async (parent, { playerId }, context) => {
       // TODO: $pull the player ID in the user playerIds user model
       if (context.user) {
-        return Player.findOneAndUpdate(
-          { _id: playerId },
+        return User.findOneAndUpdate(
+          { _id: context.user._id},
           {
             $pull: {
-              Player: {
-                _id: playerId,
-                name: context.user.username,
+             playerIds: playerId
               },
-            },
+            
           },
           { new: true }
         );
