@@ -1,10 +1,5 @@
-import React from 'react';
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
-} from '@apollo/client';
+import React, { useState, useEffect } from 'react';
+import {ApolloClient,InMemoryCache,ApolloProvider,createHttpLink,} from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -48,30 +43,11 @@ function App() {
           <Header />
           <div className="container">
             <Routes>
-              <Route 
-                path="/"
-                element={<Home />}
-              />
-              <Route 
-                path="/login"
-                element={<Login />}
-              />
-              <Route 
-                path="/signup"
-                element={<Signup />}
-              />
-              <Route 
-                path="/me"
-                element={<Profile />}
-              />
-              <Route 
-                path="/profiles/:username"
-                element={<Profile />}
-              />
-              <Route 
-                // path="/thoughts/:thoughtId"
-                // element={<SingleThought />}
-              />
+              <Route path="/"element={<Home />}/>
+              <Route path="/login"element={<Login />}/>
+              <Route path="/signup"element={<Signup />}/>
+              <Route path="/me"element={<Profile />}/>
+              <Route path="/profiles/:username"element={<Profile/>}/>
             </Routes>
           </div>
           <Footer />
@@ -79,6 +55,10 @@ function App() {
       </Router>
     </ApolloProvider>
   );
+}
+
+function App  () {
+  const [issues, setIssues] = useState([]);
 }
 
 export default App;

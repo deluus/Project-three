@@ -41,12 +41,23 @@ const resolvers = {
 
       return { token, user };
     },
+    // TODO: $push the player ID in the user playerIds user model
     addPlayer:async(parent,args,context) =>{
-      // TODO: $push the player ID in the user playerIds user model
-    
+      if (context.user) {
+        const player = await new player(args);
+        player.save();
+        await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { playerIds: player } },
+          { new: true }
+        );
+        return player;
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
+   // TODO: $pull the player ID in the user playerIds user model
     deletePlayer:async(parent,args,context) =>{
-      // TODO: $pull the player ID in the user playerIds user model
+      
     
     }
 

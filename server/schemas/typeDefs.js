@@ -8,13 +8,6 @@ const typeDefs = gql`
     password: String
   }
 
-  type Comment {
-    _id: ID
-    commentText: String
-    commentAuthor: String
-    createdAt: String
-  }
-
   type Auth {
     token: ID!
     user: User

@@ -21,7 +21,6 @@ const userSchema = new Schema({
   },
   playerIds:[{
     type:Number,
-   
   }]
 });
 
