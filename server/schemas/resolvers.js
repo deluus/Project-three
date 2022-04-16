@@ -1,6 +1,6 @@
-const { AuthenticationError } = require('apollo-server-express');
-const { User, Thought } = require('../models');
-const { signToken } = require('../utils/auth');
+const { AuthenticationError } = require("apollo-server-express");
+const { User } = require("../models");
+const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
@@ -14,7 +14,7 @@ const resolvers = {
       if (context.user) {
         return User.findOne({ _id: context.user._id });
       }
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError("You need to be logged in!");
     },
   },
 
@@ -28,28 +28,51 @@ const resolvers = {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError('No user found with this email address');
+        throw new AuthenticationError("No user found with this email address");
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        throw new AuthenticationError('Incorrect credentials');
+        throw new AuthenticationError("Incorrect credentials");
       }
 
       const token = signToken(user);
 
       return { token, user };
     },
-    addPlayer:async(parent,args,context) =>{
+    addPlayer: async (parent, { playerId }, context) => {
       // TODO: $push the player ID in the user playerIds user model
-    
+      if (context.user) {
+       return User.findOneAndUpdate(
+          { _id: context.user._id },
+          {  
+            $addToSet: {
+             playerIds: playerId ,
+            }, 
+          }
+        );
+      }
+      throw new AuthenticationError("You need to be logged in!");
     },
-    deletePlayer:async(parent,args,context) =>{
+    deletePlayer: async (parent, { playerId }, context) => {
       // TODO: $pull the player ID in the user playerIds user model
-    
-    }
-
+      if (context.user) {
+        return Player.findOneAndUpdate(
+          { _id: playerId },
+          {
+            $pull: {
+              Player: {
+                _id: playerId,
+                name: context.user.username,
+              },
+            },
+          },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
   },
 };
 
