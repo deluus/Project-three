@@ -12,6 +12,7 @@ const typeDefs = gql`
   #   _id: ID
   #   name: String
   # }
+  # commenting for solutions
 
   type Auth {
     token: ID!
