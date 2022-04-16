@@ -1,10 +1,10 @@
 const db = require('../config/connection');
-const { User, Thought } = require('../models');
+const { User} = require('../models');
 const userSeeds = require('./userSeeds.json');
 
 db.once('open', async () => {
   try {
-    await Content.deleteMany({});
+ 
     await User.deleteMany({});
 
     await User.create(userSeeds);

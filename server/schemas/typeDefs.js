@@ -8,12 +8,11 @@ const typeDefs = gql`
     password: String
   }
 
-  type Comment {
-    _id: ID
-    commentText: String
-    commentAuthor: String
-    createdAt: String
-  }
+  # type Player {
+  #   _id: ID
+  #   name: String
+  # }
+  # commenting for solutions
 
   type Auth {
     token: ID!
@@ -29,6 +28,8 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+    addPlayer(playerId: Int!): User
+    deletePlayer(playerId: Int!): User
   }
 `;
 
