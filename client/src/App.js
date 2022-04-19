@@ -9,6 +9,7 @@ import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
+import SearchPlayers from './pages/SearchPlayers';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 // import SingleThought from './pages/SingleThought';
@@ -69,8 +70,8 @@ function App() {
                 element={<Profile />}
               />
               <Route 
-                // path="/thoughts/:thoughtId"
-                // element={<SingleThought />}
+                path="/search"
+                element={<SearchPlayers/>}
               />
             </Routes>
           </div>
