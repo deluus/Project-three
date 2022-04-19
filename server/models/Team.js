@@ -1,1 +1,0 @@
-module.exports = (sequalize, DataTypes) =>
