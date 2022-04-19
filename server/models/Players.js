@@ -8,4 +8,5 @@ module.exports = (sequelize, DataTypes) => {
         jersey: DataTypes.INTEGER,
         position: DataTypes.STRING,
         yearsPro: DataTypes.INTEGER,
+        heightMeters: DataTypes.FLOAT,
     }
