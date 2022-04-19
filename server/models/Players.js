@@ -7,4 +7,5 @@ module.exports = (sequelize, DataTypes) => {
         teamId: DataTypes.STRING,
         jersey: DataTypes.INTEGER,
         position: DataTypes.STRING,
+        yearsPro: DataTypes.INTEGER,
     }
