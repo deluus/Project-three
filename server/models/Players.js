@@ -9,4 +9,12 @@ module.exports = (sequelize, DataTypes) => {
         position: DataTypes.STRING,
         yearsPro: DataTypes.INTEGER,
         heightMeters: DataTypes.FLOAT,
-    }
+    }, {});
+    Player.associate = models => {
+        Player.belongsTo(models.Year,{
+            foreignKey: 'YearId',
+            onDelete: 'CASCADE'
+        });
+    };
+    return Player;
+};
