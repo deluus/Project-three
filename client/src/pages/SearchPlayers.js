@@ -70,7 +70,7 @@ const SearchPlayers = () => {
     <>
       
         <Container>
-          <h1>Search for Books!</h1>
+          <h1>Search for Players!</h1>
           <Form onSubmit={handleFormSubmit}>
             
               <Col xs={12} md={8}>
