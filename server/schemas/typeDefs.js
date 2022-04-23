@@ -10,11 +10,9 @@ const typeDefs = gql`
   }
 
 
-  # type Player {
-  #   _id: ID
-  #   name: String
-  # }
-  # commenting for solutions
+
+  
+  
 
   type Auth {
     token: ID!

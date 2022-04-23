@@ -62,9 +62,8 @@ console.log(searchedPlayers);
       
         <Container>
 
-          <Form onSubmit={handleFormSubmit}>
-            
-              <Col xs={12} md={8}>
+          <Form onSubmit={handleFormSubmit}>              
+          <Col xs={12} md={8}>
                 <Form.Control
                   name='searchInput'
                   value={searchInput}
@@ -97,6 +96,8 @@ console.log(searchedPlayers);
               
               <Card key={player.id} border='dark'>
               <Card.Body>{player.first_name} {player.last_name}
+               
+
               <Button
                       
                       className='btn-block btn-info'
