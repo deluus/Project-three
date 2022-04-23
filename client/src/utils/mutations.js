@@ -23,3 +23,10 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const SAVE_PLAYER = gql`
+mutation AddPlayer($playerId: Int!) {
+  addPlayer(playerId: $playerId) {
+    _id
+  }
+}`

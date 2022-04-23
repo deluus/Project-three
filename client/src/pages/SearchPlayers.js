@@ -1,19 +1,16 @@
 import React, { useState,  } from 'react';
 import {  Container, Col, Form, Button, Card, } from 'react-bootstrap';
-import Auth from '../utils/auth';
+// import Auth from '../utils/auth';
 // import { savePlayerIds, getSavedPlayerIds } from '../utils/localStorage';
 import { useMutation } from '@apollo/client';
-// import { SAVE_PLAYER } from '../utils/mutations';
+import { SAVE_PLAYER } from '../utils/mutations';
 
 const SearchPlayers = () => {
   const [searchedPlayers, setsearchedPlayers] = useState([]);
   const [searchInput, setSearchInput] = useState('');
   // const [savedPlayerIds, setsavedPlayerIds] = useState(getsavedPlayerIds());
-
-  // const [savePlayer, { error }] = useMutation(SAVE_PLAYER);
-
-  
-
+console.log(searchedPlayers);
+  const [savePlayer, { error }] = useMutation(SAVE_PLAYER);
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
@@ -40,37 +37,31 @@ const SearchPlayers = () => {
       const data = await response.json();
 
       console.log(data);
-      setsearchedPlayers();
+      setsearchedPlayers(data.data);
       setSearchInput('');
     } catch (err) {
       console.error(err);
     }
   };
 
-  const handlesavePlayer = async (bookId) => {
-    // const bookToSave = searchedPlayers.find((book) => book.bookId === bookId);
-    // const token = Auth.loggedIn() ? Auth.getToken() : null;
+  const handlesavePlayer = async (playerId) => {
 
-    // if (!token) {
-    //   return false;
-    // }
+    try {
+      const { data } = await savePlayer({
+        variables: { playerId },
+      });
 
-    // try {
-    //   const { data } = await savePlayer({
-    //     variables: { newBook: { ...bookToSave } },
-    //   });
-
-    //   setsavedPlayerIds([...savedPlayerIds, bookToSave.bookId]);
-    // } catch (err) {
-    //   console.error(err);
-    // }
+      
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
     <>
       
         <Container>
-          <h1>Search for Books!</h1>
+          <h1>Search for playerss!</h1>
           <Form onSubmit={handleFormSubmit}>
             
               <Col xs={12} md={8}>
@@ -80,7 +71,7 @@ const SearchPlayers = () => {
                   onChange={(e) => setSearchInput(e.target.value)}
                   type='text'
                   size='lg'
-                  placeholder='Search for a book'
+                  placeholder='Search for a players'
                 />
               </Col>
               <Col xs={12} md={4}>
@@ -97,25 +88,23 @@ const SearchPlayers = () => {
         <h2>
           {searchedPlayers.length
             ? `Viewing ${searchedPlayers.length} results:`
-            : 'Search for a book to begin'}
+            : 'Search for a players to begin'}
         </h2>
         
-          {searchedPlayers.map((book) => {
+          {searchedPlayers.map((player) => {
+            console.log(player);
             return (
-              <Card key={book.bookId} border='dark'>
-                {book.image ? (
-                  <Card.Img src={book.image} alt={`The cover for ${book.title}`} variant='top' />
-                ) : null}
-                <Card.Body>
-                  <Card.Title>{book.title}</Card.Title>
-                  <p className='small'>Authors: {book.authors}</p>
-                  <Card.Text>{book.description}</Card.Text>
-                  {Auth.loggedIn() && (
-                    <Button>
-                    saved player
+              
+              <Card key={player.id} border='dark'>
+              <Card.Body>{player.first_name} {player.last_name}
+              <Button
+                      
+                      className='btn-block btn-info'
+                      onClick={() => handlesavePlayer(player.id)}>
+                      saved player!
                     </Button>
-                  )}
-                </Card.Body>
+              </Card.Body>
+              
               </Card>
             );
           })}
