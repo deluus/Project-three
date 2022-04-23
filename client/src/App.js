@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
 import SearchPlayers from './pages/SearchPlayers';
+import SavedPlayer from './pages/SavedPlayer'
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 // import SingleThought from './pages/SingleThought';
@@ -72,6 +73,10 @@ function App() {
               <Route 
                 path="/search"
                 element={<SearchPlayers/>}
+              />
+              <Route 
+                path="/saved"
+                element={<SavedPlayer/>}
               />
             </Routes>
           </div>
