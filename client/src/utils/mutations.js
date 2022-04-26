@@ -30,3 +30,11 @@ mutation AddPlayer($playerId: Int!) {
     _id
   }
 }`
+
+export const REMOVE_PLAYER = gql`
+mutation deletePlayer($playerId: Int!) {
+  deletePlayer(playerId: $playerId) {
+    _id
+  }
+}
+`
