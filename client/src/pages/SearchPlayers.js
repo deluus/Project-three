@@ -1,6 +1,6 @@
 import React, { useState,  } from 'react';
 import {  Container, Col, Form, Button, Card, } from 'react-bootstrap';
-// import Auth from '../utils/auth';
+import Auth from '../utils/auth';
 // import { savePlayerIds, getSavedPlayerIds } from '../utils/localStorage';
 import { useMutation } from '@apollo/client';
 import { SAVE_PLAYER } from '../utils/mutations';

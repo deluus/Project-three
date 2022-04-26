@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect } from "react";
 import { Container, Card, Button } from "react-bootstrap";
 import Auth from "../utils/auth";
@@ -9,6 +10,18 @@ import { REMOVE_PLAYER } from "../utils/mutations";
 
 const SavedPlayers = () => {
   const { loading, data } = useQuery(QUERY_ME);
+=======
+import React, { useEffect } from 'react';
+import { Jumbotron, Container, Card, Button } from 'react-bootstrap';
+import Auth from '../utils/auth';
+// import { removePlayerId } from '../utils/localStorage';
+import { useQuery, useMutation } from '@apollo/client';
+import { GET_ME } from '../utils/queries';
+import { REMOVE_PLAYER } from '../utils/mutations';
+
+const SavedPlayers = () => {
+  const { loading, data } = useQuery(GET_ME);
+>>>>>>> fc364aac13904e8e29961af89ce744f935230bc0
   const [removePlayer, { error }] = useMutation(REMOVE_PLAYER);
   const userData = data?.me || {};
   let playerIds = [];
