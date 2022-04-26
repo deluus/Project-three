@@ -94,18 +94,18 @@ const SavedPlayers = () => {
         </h2>
         
        
-        {/* <Card key={player.id} border='dark'>
+        <Card key={playerIds.id} border='dark'>
           <Card.Body>
-            <Card.Title>{player.first_name} {player.last_name}</Card.Title>
+            <Card.Title>{playerIds.first_name} {playerIds.last_name}</Card.Title>
             <Card.Subtitle className="mb-2 text-muted">Player Info</Card.Subtitle>
             <Card.Text>
-              {player.height_feet} {player.height_inches}
-              {player.position} {player.team} {player.weight_pounds}
+              {playerIds.height_feet} {playerIds.height_inches}
+              {playerIds.position} {playerIds.team} {playerIds.weight_pounds}
             </Card.Text>
             <Card.Link href="#">Card Link</Card.Link>
             <Card.Link href="#">Another Link</Card.Link>
           </Card.Body>
-        </Card> */}
+        </Card>
       </Container>
     </>
   );
