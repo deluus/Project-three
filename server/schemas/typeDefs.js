@@ -9,11 +9,6 @@ const typeDefs = gql`
     playerIds: [Int]
   }
 
-
-
-  
-  
-
   type Auth {
     token: ID!
     user: User
