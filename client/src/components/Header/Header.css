@@ -1,0 +1,10 @@
+.App.header {
+    background-color: red;
+    color: white;
+    width: 100%;
+    position: fixed;
+}
+
+.header-wrapper {
+    height: calc(100px + 5vh);
+}
