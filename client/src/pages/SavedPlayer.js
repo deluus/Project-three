@@ -31,7 +31,7 @@ const SavedPlayers = () => {
           };
 
           const response = await fetch(
-            `https://free-nba.p.rapidapi.com/stats?page=0&per_page=25&player_ids[]=${playerIds}`,
+            `https://free-nba.p.rapidapi.com/players/${playerIds}`,
             options
           );
 
